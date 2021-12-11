@@ -10,12 +10,10 @@ app.listen(3000, () => {
 })
 
 
-app.use('/*', function (req, res, next) {
-    if(authenticateUser(req.body.email, req.body.password, res)) {
-        next()
-    }
+app.use('/', function (req, res, next) {
+    authenticateUser(req.body[0].email, req.body[0].password, res, next);
 });
 
 app.use('/account', account);
-
+//
 
