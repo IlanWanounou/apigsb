@@ -8,7 +8,12 @@ exports.login = (req, res) => {
     try {
         const {email, password} = req.body;
         if (!(email && password)) {
-            return res.status(400).send("Email ou mot de passe manquant");
+            const reponse = {
+                statut: "error",
+                message: "Email ou mot de passe manquant",
+                autorisation: false
+            }
+            return res.status(200).json(reponse);
         }
         const options = {
             where: {
@@ -23,10 +28,20 @@ exports.login = (req, res) => {
                 const token = auth.generateToken(data);
                 cookies.set('token', token, {
                 })
-                res.status(200).send('OK');
+                const reponse = {
+                    statut: "OK",
+                    message: "Email et mot de passe valide",
+                    autorisation: true
+                }
+                res.status(200).json(reponse);
             })
         } else {
-            return res.status(400).send("Email ou mot de passe incorrect");
+            const reponse = {
+                statut: "error",
+                message: "Email ou mot de passe incorrect",
+                autorisation: false
+            }
+            return res.status(200).json(reponse);
         }
     } catch (err) {
         console.log(err);
