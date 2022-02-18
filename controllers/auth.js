@@ -24,21 +24,29 @@ exports.login = (req, res) => {
 
         if (user) {
             user.then(data => {
-                let cookies = new Cookies(req, res)
-                const token = auth.generateToken(data);
-                cookies.set('token', token, {
-                })
-                const reponse = {
-                    statut: "OK",
-                    message: "Email et mot de passe valide",
-                    autorisation: true
+                if(verify(password, data.mdp)) {
+                    let cookies = new Cookies(req, res)
+                    const token = auth.generateToken(data);
+                    cookies.set('token', token, {})
+                    const reponse = {
+                        statut: "OK",
+                        message: "Email et mot de passe valide",
+                        autorisation: true
+                    }
+                    res.status(200).json(reponse);
+                } else {
+                    const reponse = {
+                        statut: "error",
+                        message: "Email ou mot de passe incorrect",
+                        autorisation: false
+                    }
+                    return res.status(200).json(reponse);
                 }
-                res.status(200).json(reponse);
             })
         } else {
             const reponse = {
                 statut: "error",
-                message: "Email ou mot de passe incorrect",
+                message: "Email incorrect",
                 autorisation: false
             }
             return res.status(200).json(reponse);
