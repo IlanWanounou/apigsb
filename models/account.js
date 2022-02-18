@@ -50,6 +50,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1
+    },
+    AUTH_TOKEN: {
+      type: DataTypes.STRING(201),
+      allowNull: true
     }
   }, {
     sequelize,

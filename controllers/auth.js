@@ -26,15 +26,16 @@ exports.login = (req, res) => {
         if (user) {
             user.then(data => {
                 if(verify(password, data.mdp)) {
-                    let cookies = new Cookies(req, res)
                     const token = auth.generateToken(data);
-                    cookies.set('token', token, {})
                     const reponse = {
                         statut: "OK",
                         message: "Email et mot de passe valide",
-                        autorisation: true
+                        autorisation: true,
+                        AUTH_TOKEN: token,
                     }
-                    res.status(200).json(reponse);
+
+                    account.update({AUTH_TOKEN: token}, {where: {id: data.id}})
+                     res.status(200).json(reponse);
                 } else {
                     const reponse = {
                         statut: "error",
