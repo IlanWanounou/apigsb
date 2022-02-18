@@ -16,6 +16,7 @@ exports.login = (req, res) => {
             return res.status(200).json(reponse);
         }
         const options = {
+            raw: true,
             where: {
                 email
             },
