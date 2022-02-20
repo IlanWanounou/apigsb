@@ -22,10 +22,8 @@ exports.login = (req, res) => {
             },
         }
         const user = account.login(options);
-
-        if (user) {
             user.then(data => {
-                if(verify(password, data.mdp)) {
+                if(data && verify(password, data.mdp)) {
                     const token = auth.generateToken(data);
                     const reponse = {
                         statut: "OK",
@@ -33,7 +31,6 @@ exports.login = (req, res) => {
                         autorisation: true,
                         AUTH_TOKEN: token,
                     }
-
                     account.update({AUTH_TOKEN: token}, {where: {id: data.id}})
                      res.status(200).json(reponse);
                 } else {
@@ -45,14 +42,6 @@ exports.login = (req, res) => {
                     return res.status(200).json(reponse);
                 }
             })
-        } else {
-            const reponse = {
-                statut: "error",
-                message: "Email incorrect",
-                autorisation: false
-            }
-            return res.status(200).json(reponse);
-        }
     } catch (err) {
         console.log(err);
     }
