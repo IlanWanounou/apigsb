@@ -32,7 +32,11 @@ exports.login = (req, res) => {
                         AUTH_TOKEN: token,
                     }
                     account.update({AUTH_TOKEN: token}, {where: {id: data.id}})
-                     res.status(200).json(reponse);
+                    new Cookies(req, res).set('token', token, {
+                        httpOnly: true,
+                        sameSite: "strict"
+                    })
+                    res.status(200).json(reponse);
                 } else {
                     const reponse = {
                         statut: "error",
