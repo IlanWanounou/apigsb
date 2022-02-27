@@ -5,6 +5,7 @@ const fraisKmCrl = require('../controllers/fraisKm');
 
 //fraiskm
 router.post('/fraiskm/:mois', fraisKmCrl.findOne);
+router.put('/fraiskm/:mois', fraisKmCrl.update);
 
 
 

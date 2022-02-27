@@ -14,3 +14,18 @@ exports.findOne = async(mois, idvisiteur) => {
     }
     return LigneFraisForfait.findOne(options);
 }
+
+exports.update = async (mois, idvisiteur, values) => {
+
+    const options = {
+        where: {
+            idvisiteur,
+            mois,
+            idfraisforfait : 'KM'
+        },
+        raw: true,
+        attributes: ['quantite'],
+    }
+    return LigneFraisForfait.update({ quantite: values }, options);
+
+}
