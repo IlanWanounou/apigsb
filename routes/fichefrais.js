@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fraisKmCrl = require('../controllers/fraisKm');
 const fraisRepas = require('../controllers/fraisRepas');
-
+const fraisNuit = require('../controllers/fraisNuit');
 
 
 //fraiskm
@@ -13,9 +13,9 @@ router.put('/fraiskm/:mois', fraisKmCrl.update);
 router.post('/fraisrepas/:mois', fraisRepas.findOne);
 router.put('/fraisrepas/:mois', fraisRepas.update);
 
-/*// fraisNuit
+// fraisNuit
 router.post('/fraisnuit/:mois', fraisNuit.findOne);
-//router.put('/fraisnuit/:mois', fraisNuit.update);
+router.put('/fraisnuit/:mois', fraisNuit.update);
 
 // fraisetapes
 //router.post('/fraisetapes/:mois', fraisetapes.findOne);
