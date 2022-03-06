@@ -20,7 +20,7 @@ exports.update = async (req, res) => {
     try {
         let data = await fraisEtapesService.update(req.params.mois, getIdVisteur(req, res), req.body.quantite);
         if (data[0]===1) {
-            res.status(201).json({message:"modification effetuer"});
+            res.status(201).json({message:"La modification a été effectué"});
         } else {
             res.status(200).json({message:"Il n'y a aucune fiche correspondant à ce mois"});
         }
