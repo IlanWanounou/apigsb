@@ -1,7 +1,10 @@
-const account = require('../models');
+    const {
+        account: Account,
+    } = require('../models');
+
 
 exports.login = (options) => {
-    return account.findOne(options);
+    return Account.findOne(options);
 }
 
-exports.update = async (values, options) => await account.update(values, options);
+exports.update = async (values, options) => await Account.update(values, options);
