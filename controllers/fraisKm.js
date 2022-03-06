@@ -3,7 +3,6 @@ const {getIdVisteur} = require('../services/auth');
 
 
 exports.findOne = async (req, res) => {
-    console.log(getIdVisteur(req, res))
     try {
         let data = await fraisKmService.findOne(req.params.mois, getIdVisteur(req, res));
         if (data) {
