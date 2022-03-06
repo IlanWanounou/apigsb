@@ -21,3 +21,4 @@ exports.getIdVisteur = (req, res) => {
     cookie = cookie.replace(regex, '');
     const id = jwt.verify(cookie, process.env.TOKEN_KEY);
     return id.userId;
+}
