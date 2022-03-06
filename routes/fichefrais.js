@@ -26,7 +26,6 @@ router.put('/fraisetapes/:mois', fraisEtapes.update);
 //router.post('/fraiskm/:mois', fraisHF.findOne);
 //router.put('/fraiskm/:mois', fraisHF.update);
 
-*/
 
 
 //liste fraisHF
