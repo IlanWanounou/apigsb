@@ -3,6 +3,7 @@ const router = express.Router();
 const fraisKmCrl = require('../controllers/fraisKm');
 const fraisRepas = require('../controllers/fraisRepas');
 const fraisNuit = require('../controllers/fraisNuit');
+const fraisEtapes = require('../controllers/fraiseEtapes');
 
 
 //fraiskm
@@ -19,7 +20,7 @@ router.put('/fraisnuit/:mois', fraisNuit.update);
 
 // fraisetapes
 //router.post('/fraisetapes/:mois', fraisetapes.findOne);
-//router.put('/fraisetapes/:mois', fraisNuit.update);
+router.put('/fraisetapes/:mois', fraisEtapes.update);
 
 // fraisHF
 //router.post('/fraiskm/:mois', fraisHF.findOne);
