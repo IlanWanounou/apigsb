@@ -21,7 +21,7 @@ exports.update = async (req, res) => {
         if (data[0]===1) {
             res.status(201).json({message:"modification effetuer"});
         } else {
-            res.status(200).json({message:"La fiche pour le mois demander n'exister pas"});
+            res.status(200).json({message:"Il n'y a aucune fiche correspondant à ce mois"});
         }
     } catch (error) {
         res.status(500).json({message: error.message});
