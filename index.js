@@ -1,12 +1,13 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const auth = require("./routes/auth");
+const fichefrais = require('./routes/fichefrais')
+app.use(express.json());
 
-const account = require('./routes/account');
-const bdd = require('./Database');
 
 app.listen(3000, () => {
     console.log('On');
 })
 
-
-app.use('/account', account);
+app.use('/auth', auth);
+app.use('/fichefrais', fichefrais);
